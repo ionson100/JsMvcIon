@@ -5,7 +5,7 @@ Using ajax even easier Asp.Net
         
 1. Create  model.
 
-2. Mark the attribute [JsMvcBaseAtribute...].
+2. Mark the attribute [JsMvcBaseAttribute...].
 
 3. Object models do json send to page: 
 
