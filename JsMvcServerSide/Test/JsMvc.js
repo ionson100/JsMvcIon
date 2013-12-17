@@ -4,7 +4,7 @@
         var settings = $.extend({
             'Model': null,
             'Table': false,
-          
+
         }, options);
         var obj = jQuery.parseJSON(settings.Model);
         var table = $('<table></table>').addClass('foo');
@@ -34,8 +34,8 @@
         $(this).append(table);
     };
 
-  
-       
+
+
 
     function group(o) {
         var w1 = [], w2 = [], w3 = [], w4 = [], w5 = [], w6 = [];
@@ -80,10 +80,10 @@
         return rr;
     }
 
-   
 
-  
-  
+
+
+
 
 })(jQuery);
 
@@ -93,6 +93,7 @@ function getJsonJs() {
     jQuery.each(tt, function () {
         var atr = this.getAttribute('data-js');
         if (atr == 0 || atr == 1 || atr == 5) {
+
             objs['' + this.getAttribute('name') + ''] = this.value;
         }
         if (atr == 3 && this.checked == true) {
@@ -111,18 +112,113 @@ function getJsonJs() {
                     }
                 }
                 objs['' + this.getAttribute('name') + ''] = arr;
+            } else {
+                objs['' + this.getAttribute('name') + ''] = $(this).val();
             }
-            objs['' + this.getAttribute('name') + ''] = $(this).val();
+
 
         }
         if (atr == 2) {
             objs['' + this.getAttribute('name') + ''] = this.checked;
         }
+        if (atr == 6) {
+            objs['' + this.getAttribute('name') + ''] = $(this).html();
+        }
+        if (atr == 7) {
+            objs['' + this.getAttribute('name') + ''] = $(this).attr('src');
+        }
+        if (atr == 8) {
+            arr = [];
+            if (jQuery.browser == "msie") {
+                for (var i = 0; i < this.all.length; i++) {
+                    if (this.all.item(i).selected == true) {
+                        arr.push(this.all.item(i).value);
+                    }
+                }
+            } else {
+                if ($(this).prop("checked")) {
 
+                    if (objs['' + this.getAttribute('name') + ''] == null) {
+                        objs['' + this.getAttribute('name') + ''] = [];
+                    }
+                    objs['' + this.getAttribute('name') + ''].push($(this).attr('value'));
+                }
+            }
+        }
     });
-      alert(JSON.stringify(objs));
+    alert(JSON.stringify(objs));
     return JSON.stringify(objs);
 }
+
+
+
+
+(function ($) {
+    $.fn.CreateObjectToJson = function () {
+        var obj = {};
+        $(this).each(function () {
+            if ($(this).is("[type='radio']")) {
+                if ($(this).prop("checked")) {
+                    obj['' + this.getAttribute('name')] = this.getAttribute('value');
+                }
+            }
+            if ($(this).is("[type='checkbox']")) {
+                if ($(this).prop("checked")) {
+                    if (obj['' + this.getAttribute('name')] == null) {
+                        obj['' + this.getAttribute('name')] = this.getAttribute('value');
+                    } else {
+                        if ($.isArray(obj['' + this.getAttribute('name')])) {
+                            obj['' + this.getAttribute('name')].push(this.getAttribute('value'));
+                        } else {
+                            var e = obj['' + this.getAttribute('name')];
+                            obj['' + this.getAttribute('name')] = [];
+                            obj['' + this.getAttribute('name')].push(e);
+                            obj['' + this.getAttribute('name')].push(this.getAttribute('value'));
+                        }
+                    }
+                }
+
+            }
+            if ($(this).is("select")) {
+                if ($(this).prop("multiple")) {
+
+                    var arr = [];
+                    if (jQuery.browser == "msie") {
+                        for (var i = 0; i < this.all.length; i++) {
+                            if (this.all.item(i).selected == true) {
+                                arr.push(this.all.item(i).value);
+                            }
+                        }
+                        obj['' + this.getAttribute('name') + ''] = arr;
+                    } else {
+                        obj['' + this.getAttribute('name') + ''] = $(this).val();
+                    }
+                } else {
+                    obj['' + this.getAttribute('name') + ''] = $(this).val();
+                }
+            }
+            if ($(this).is(":input")) {
+                if ($(this).is("[type='checkbox']") || $(this).is("[type='radio']")) {
+
+                } else {
+                    obj['' + this.getAttribute('name') + ''] = $(this).val();
+                }
+            }
+            if ($(this).is("div")) {
+
+                obj['' + this.getAttribute('name') + ''] = $(this).html();
+            }
+            if ($(this).is("img")) {
+
+                obj['' + this.getAttribute('name') + ''] = $(this).attr('src');
+            }
+
+        });
+
+        return JSON.stringify(obj);
+    };
+
+})(jQuery);
 
 
 

@@ -9,6 +9,7 @@
         Select = 4,
         TextArea = 5,
         Literal=6,
-        ImageCore=7
+        ImageCore=7,
+        CheckBoxGroup=8
     }
 }

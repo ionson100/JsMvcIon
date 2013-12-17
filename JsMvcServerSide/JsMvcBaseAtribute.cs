@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace JsMvcServerSide
 {
@@ -103,7 +104,8 @@ namespace JsMvcServerSide
                     var vv = "";
                     if (item.Value == Value.ToString())
                         vv = "checked=\"checked\"";
-                    sb.AppendFormat("<label><Br><input data-js=\"3\" type=\"radio\" value=\"{0}\"  {1} name=\"{2}\" class=\"{8}\"  id=\"{2}{3}{4}\" {5} {6} />{7}</label>", item.Value, vv, Name, '_', ie, Attributes, des, item.Text, Class);
+                    sb.AppendFormat("<label><Br><input data-js=\"3\" type=\"radio\" value=\"{0}\"  {1} name=\"{2}\" class=\"{8}\"  id=\"{2}{3}{4}\" {5} {6} />{7}</label>",
+                        item.Value, vv, Name, '_', ie, Attributes, des, item.Text, Class);
                 }
                 sb.Append("</div>");
                 return sb.ToString();
@@ -112,7 +114,8 @@ namespace JsMvcServerSide
             if (DisplayMode == DisplayMode.Select)
             {
                 var sb = new StringBuilder("<div class=\"listbox\" > " + DisplayName);
-                sb.AppendFormat("</Br> <select  data-js=\"4\" id=\"{0}\" name=\"{0}\" class=\"{1}\" {2} {4} {6}>{3}{5}", Name, Class, Attributes, Environment.NewLine, UtilsCore.GetStringValidate(this), "", des);
+                sb.AppendFormat("</Br> <select  data-js=\"4\" id=\"{0}\" name=\"{0}\" class=\"{1}\" {2} {4} {6}>{3}{5}",
+                    Name, Class, Attributes, Environment.NewLine, UtilsCore.GetStringValidate(this), "", des);
 
                 var ee = Activator.CreateInstance(EnumerableSelectItems);
                 var items = ee as IEnumerableSelectItems;
@@ -165,17 +168,62 @@ namespace JsMvcServerSide
             {
                 return string.Format("<label>{4}</br><img src=\"{2}\"  id=\"{3}\" class=\"{0}\" name=\"{3}\" {1} data-js=\"7\" /></label>", Class, Attributes, Value, Name, DisplayName);
             }
+            if (DisplayMode == DisplayMode.CheckBoxGroup)
+            {
+                var sb = new StringBuilder(string.Format("<div class=\"checkboxjs\">{0}</br>", DisplayName));
+
+                var ee = Activator.CreateInstance(EnumerableSelectItems);
+                var items = ee as IEnumerableSelectItems;
+                if (items == null)
+                {
+                    throw new Exception("Type does not implement the IEnumerableSelectItemsCustom attributes");
+                }
+                int ii = 0;
+                foreach (var item in items.ListItems)
+                {
+                    ii++;
+                    var vv = "";
+                    if (Value != null)
+                    {
+                        var val = Value as IEnumerable;
+                        if (val != null)
+                        {
+                            var t = val.GetEnumerator();
+                            while (t.MoveNext())
+                            {
+                                if (t.Current.ToString() == item.Value)
+                                    vv = "checked=\"checked\"";
+                            }
+                        }
+                        else
+                        {
+                            if (item.Value == Value.ToString())
+                                vv = "checked=\"checked\"";
+                        }
+                    }
+
+                    sb.AppendFormat("<input type=\"checkbox\" name=\"{0}\" id=\"{0}_"+ii+"\" {1} value=\"{4}\" {5} class=\"{2}\" {3} data-js=\"8\" />",
+                        Name, Description, Class, Attributes, item.Value,vv);
+                  
+                    sb.AppendFormat("<label for=\"{0}_"+ii+"\">{1}</label>", Name, item.Text);  sb.Append("</br>");
+             
+                }
+                sb.Append("</div>");
+                return sb.ToString();
+            }
 
             return null;
         }
 
         internal string GenerateSpan()
         {
-            if (CompareAttribute == null && RangeAttribute == null && RequiredAttribute == null && StringLengthAttribute == null && RegularExpressionAttribute == null && RemoteAttribute == null)
+            if (CompareAttribute == null && RangeAttribute == null && RequiredAttribute == 
+                null && StringLengthAttribute == null && RegularExpressionAttribute == null && RemoteAttribute == null)
             {
                 return null;
             }
-            return "</br><span class=\"field-validation-error\" data-valmsg-replace=\"true\" data-valmsg-for=\"" + Name + "\">  <span class=\"\" for=\"" + Name + "\" generated=\"true\"></span>  </span>";
+            return "</br><span class=\"field-validation-error\" data-valmsg-replace=\"true\" data-valmsg-for=\"" + Name + "\"> " +
+                   " <span class=\"\" for=\"" + Name + "\" generated=\"true\"></span>  </span>";
         }
     }
 }

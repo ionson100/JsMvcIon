@@ -93,7 +93,7 @@ namespace JsMvcServerSide
             var jsonsL = new List<ItemJson>();
             foreach (var bb in list)
             {
-
+                if (bb.DisplayMode == DisplayMode.CheckBoxGroup && bb.EnumerableSelectItems == null) throw new Exception("With type DisplayMode.ListBox, attribute, you must specify the type implements IEnumerableSelectItems");
                 if (bb.DisplayMode == DisplayMode.Select && bb.EnumerableSelectItems == null) throw new Exception("With type DisplayMode.ListBox, attribute, you must specify the type implements IEnumerableSelectItems");
                 if (bb.DisplayMode == DisplayMode.RadioButtom && bb.EnumerableSelectItems == null) throw new Exception("With C type DisplayMode.RadioButtom, attribute, you need to specify the type implements IEnumerableSelectItems");
                 if (bb.DisplayMode == DisplayMode.CheckBox && bb.PropertyType != typeof(bool)) throw new Exception("DisplayMode.CheckBox parameter applies only to the type - bool");
