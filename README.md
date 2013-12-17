@@ -1,9 +1,9 @@
-JsMvcIon
+JsMvc ASP.Net
 ========
 
 Using ajax even easier Asp.Net
         
-1. Create a model.
+1. Create  model.
 
 2. Mark the attribute [JsMvcBaseAtribute...].
 
@@ -25,3 +25,13 @@ Using ajax even easier Asp.Net
 5. Ajax to server:
 
   getJsonJs();
+  
+Do not forget for validate:
+  
+   Web.config section appSettings:
+   
+   add key="ClientValidationEnabled" value="true" 
+   
+   add key="UnobtrusiveJavaScriptEnabled" value="true" 
+   
+ 
