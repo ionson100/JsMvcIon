@@ -24,7 +24,7 @@ Using ajax even easier Asp.Net
           
 5. Ajax to server:
 
-  getJsonJs();
+  getJsonJs(); or $(selector).CreateObjectToJson();
   
 Do not forget for validate:
   
