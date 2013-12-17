@@ -8,7 +8,7 @@ using JsMvcServerSide;
 
 namespace JsMvcTest.Controllers
 {
-    public class HomeController : Controller
+    public class HomeSSController : Controller
     {
         [HttpGet]
         public ActionResult Index()
