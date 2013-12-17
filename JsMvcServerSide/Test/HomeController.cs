@@ -30,13 +30,13 @@ namespace JsMvcTest.Controllers
         [WebMethod]
         public JsonResult GetJosonText()
         {
-            return this.Json(UtilsCore.GetJoson(new ModelIon(){  IsValid = true, Srok = new[] { 2, 3 },Date = DateTime.Now,Name = "sdasdasd", IsValid2 = true, Srok2 = 4 })); //
+            return this.Json(UtilsCore.GetJson(new ModelIon(){  IsValid = true, Srok = new[] { 2, 3 },Date = DateTime.Now,Name = "sdasdasd", IsValid2 = true, Srok2 = 4 })); //
         }
 
         [WebMethod]
         public JsonResult GetJosonTextSend(ModelIon d)
         {
-            return Json(UtilsCore.GetJoson(d));
+            return Json(UtilsCore.GetJson(d));
         }
 
         public JsonResult CheckName(string name)

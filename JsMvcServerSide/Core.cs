@@ -16,7 +16,7 @@ namespace JsMvcServerSide
         /// </summary>
         /// <param name="model">object whose properties marked attribute JsMvcBaseAtribute</param>
         /// <returns>Joson текст</returns>
-        public static string GetJoson(object model)
+        public static string GetJson(object model)
         {
             var list = new List<JsMvcBaseAtribute>();
             foreach (var basep in model.GetType().GetProperties())
