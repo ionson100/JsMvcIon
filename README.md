@@ -12,7 +12,7 @@ Using ajax even easier Asp.Net
         [WebMethod]
         public JsonResult GetJsonText()
         {
-            return this.Json(UtilsCore.GetJson(new ModelIon()); 
+            return this.Json(UtilsCore.GetJson(new ModelIon())); 
         }
         
 4. Json on the client inserted into  plugin: 
