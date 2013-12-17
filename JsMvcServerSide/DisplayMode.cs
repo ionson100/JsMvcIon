@@ -7,6 +7,8 @@
         CheckBox = 2,
         RadioButtom = 3,
         Select = 4,
-        TextArea = 5
+        TextArea = 5,
+        Literal=6,
+        ImageCore=7
     }
 }

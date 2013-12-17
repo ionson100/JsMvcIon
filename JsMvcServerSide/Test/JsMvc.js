@@ -34,12 +34,7 @@
         $(this).append(table);
     };
 
-    //r-Required;
-
-    function getSegment(val) {
-        alert(val.element);
-        return val.element;
-    }
+  
        
 
     function group(o) {

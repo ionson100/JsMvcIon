@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Web.Mvc;
 
@@ -154,6 +155,15 @@ namespace JsMvcServerSide
                 return string.Format("<label>{0}</Br>  <textarea data-js=\"5\" id=\"{1}\"  class=\"{2}\"  name=\"{1}\"  {3} {4} {7}>{5}</textarea></label>{6}",
                     DisplayName, Name, Class, Attributes, des, Value, GenerateSpan(), UtilsCore.GetStringValidate(this));
 
+            }
+            if (DisplayMode == DisplayMode.Literal)
+            {
+                return string.Format("<div id=\"{3}\" class=\"{0}\" name=\"{3}\" {1} data-js=\"6\" >{2}</div>", Class, Attributes, Value, Name);
+            }
+
+            if (DisplayMode == DisplayMode.ImageCore)
+            {
+                return string.Format("<label>{4}</br><img src=\"{2}\"  id=\"{3}\" class=\"{0}\" name=\"{3}\" {1} data-js=\"7\" /></label>", Class, Attributes, Value, Name, DisplayName);
             }
 
             return null;
