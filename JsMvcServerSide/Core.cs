@@ -18,10 +18,10 @@ namespace JsMvcServerSide
         /// <returns>Joson текст</returns>
         public static string GetJson(object model)
         {
-            var list = new List<JsMvcBaseAtribute>();
+            var list = new List<JsMvcBaseAttribute>();
             foreach (var basep in model.GetType().GetProperties())
             {
-                var atr = basep.GetCustomAttribute<JsMvcBaseAtribute>();
+                var atr = basep.GetCustomAttribute<JsMvcBaseAttribute>();
                 if (atr == null) continue;
                 if (string.IsNullOrWhiteSpace(atr.Name))
                 {
@@ -104,11 +104,11 @@ namespace JsMvcServerSide
             return res;
         }
 
-        private static int CompareBaseAtribute(JsMvcBaseAtribute x, JsMvcBaseAtribute y)
+        private static int CompareBaseAtribute(JsMvcBaseAttribute x, JsMvcBaseAttribute y)
         {
             return x.Sorted.CompareTo(y.Sorted);
         }
-        internal static string GetStringValidate(JsMvcBaseAtribute bb)
+        internal static string GetStringValidate(JsMvcBaseAttribute bb)
         {
 
             var sb = new StringBuilder();

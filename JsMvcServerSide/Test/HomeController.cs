@@ -56,56 +56,56 @@ namespace JsMvcTest.Controllers
        //  [StringLength(5,MinimumLength = 2)]
        // [Required()]
         [Description("Description text")]
-        [JsMvcBaseAtribute(Class = "kjskdjj", DisplayMode = DisplayMode.TextBox, Sorted = 203)]
+        [JsMvcBaseAttribute(Class = "kjskdjj", DisplayMode = DisplayMode.TextBox, Sorted = 203)]
         public string Name { get; set; }
 
         [Required()]
         [Description("Description text")]
         [DisplayName("Count items")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.TextBox, Type = "text", Sorted = 103)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.TextBox, Type = "text", Sorted = 103)]
         public int Count { get; set; }
 
         [Required()]
         [Description("Description text")]
         [DisplayName("Meeting Date")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.TextBox, Type = "text", Sorted = 303)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.TextBox, Type = "text", Sorted = 303)]
         public DateTime Date { get; set; }
 
-        [JsMvcBaseAtribute(DisplayMode = DisplayMode.HiddenField, Sorted = 300)]
+        [JsMvcBaseAttribute(DisplayMode = DisplayMode.HiddenField, Sorted = 300)]
         public int Id { get; set; }
 
 
         [Description("Description text")]
         [DisplayName("Validate")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.RadioButtom, EnumerableSelectItems = typeof(ForBool), Sorted = 403)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.RadioButtom, EnumerableSelectItems = typeof(ForBool), Sorted = 403)]
         public bool IsValid { get; set; }
 
 
         [Description("Description text")]
         [DisplayName("Validate2")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.CheckBox, Sorted = 203)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.CheckBox, Sorted = 203)]
         public bool IsValid2 { get; set; }
 
         [Required()]
         [Description("Description text")]
         [DisplayName("Message1")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.Select, Attributes = " multiple='' size='4'", EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 123)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.Select, Attributes = " multiple='' size='4'", EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 123)]
         public int[] Srok { get; set; }
 
         [Description("Description text")]
         [DisplayName("Message2")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.Select, Attributes = "  size='8'", EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 123)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.Select, Attributes = "  size='8'", EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 123)]
         public int Srok22 { get; set; }
 
         [Description("Description text")]
         [DisplayName("Message3")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.Select, EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 34)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.Select, EnumerableSelectItems = typeof(ForBoolForSelectAsInt), Sorted = 34)]
         public int Srok2 { get; set; }
 
         [Required()]
         [Description("Description text")]
         [DisplayName("AllMessages")]
-        [JsMvcBaseAtribute(Class = "sdasd", DisplayMode = DisplayMode.TextArea, Sorted = 0)]
+        [JsMvcBaseAttribute(Class = "sdasd", DisplayMode = DisplayMode.TextArea, Sorted = 0)]
         public string TextMessage { get; set; }
     }
 

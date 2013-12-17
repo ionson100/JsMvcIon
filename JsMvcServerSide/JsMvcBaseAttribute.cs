@@ -13,7 +13,7 @@ namespace JsMvcServerSide
     /// </summary>
 
     [AttributeUsage(AttributeTargets.Property, Inherited = true, AllowMultiple = false)]
-    public class JsMvcBaseAtribute : Attribute
+    public class JsMvcBaseAttribute : Attribute
     {
         internal System.Web.Mvc.CompareAttribute CompareAttribute { get; set; }
         internal RangeAttribute RangeAttribute { get; set; }
