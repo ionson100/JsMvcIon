@@ -41,7 +41,7 @@ namespace JsMvcTest.Controllers
 
         public JsonResult CheckName(string name)
         {
-            var result = string.Equals(name, "хуй");
+            var result = string.Equals(name, "Ok");
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
