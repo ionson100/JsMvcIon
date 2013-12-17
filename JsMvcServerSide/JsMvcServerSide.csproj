@@ -47,7 +47,7 @@
     <Compile Include="Test\HomeController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JsMvc.js" />
+    <Content Include="Test\JsMvc.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Test\Index.cshtml" />
